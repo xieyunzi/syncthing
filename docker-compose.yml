@@ -1,0 +1,17 @@
+version: '3'
+services:
+  syncthing:
+    image: syncthing/syncthing
+    ports:
+      - ${PORT_8384}
+      - ${PORT_22000}
+    volumes:
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
+      - ./data:/var/syncthing
+      - ./config:/var/syncthing/config
+
+networks:
+  default:
+    external:
+      name: xz-bridge
